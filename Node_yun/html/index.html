@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+</head>
+<body>
+    <div class="box">
+        <ul>
+            
+        </ul>
+    </div>
+    <p>
+        姓名：<input type="text" name="name" class="name">
+    </p>
+    <p>
+        年龄：<input type="text" name="age" class="age">
+    </p>
+    <button class="add">增加</button>
+</body>
+<script>
+    function getdata(){
+        $.ajax({
+            url: '/news',
+            success: (data)=>{
+                console.log(data);
+                var el = ''
+                data.forEach(element => {
+                    el += `<li><p>${element.name}</p><p>${element.age}</p></li>`
+                });
+                $('.box ul').html(el);
+            }
+        })
+    }
+
+    $('.add').click(() => {
+        var data = {
+            name: null,
+            age: null
+        }
+        data.name = $('.name').val();
+        data.age = $('.age').val();
+        $.ajax({
+            url: "/add",
+            type: "POST",
+            data: data,
+            success: (data) => {
+                console.log(data);
+                getdata();
+            }
+        })
+    })
+</script>
+</html>

@@ -1,0 +1,69 @@
+01      mongo数据库的连接
+        MongoClient = require("mongodb").MongoClient 初始化
+        MongoClient.connect(url, callback(err, client)) 连接数据库服务器
+        db = client.db(dbName)  连接指定数据库
+        client.close() 断开连接
+
+02      添加多条数据到
+        db.collection(collectionName) 连接集合
+        insertOne //插入一条数据
+        insertMany(json, callback(err, result)) //插入多个数据
+        { result: { ok: 1, n: 3 },
+            ops:
+            [ { name: '小一',
+                age: 21,
+                love: [Array],
+                lv: [Object],
+                _id: 5af11b7670490262c8d88d40 },
+                { name: '小二',
+                age: 17,
+                love: [Array],
+                lv: [Object],
+                _id: 5af11b7670490262c8d88d41 },
+                { name: '小三',
+                age: 34,
+                love: [Array],
+                lv: [Object],
+                _id: 5af11b7670490262c8d88d42 
+            } ],
+            insertedCount: 3,
+            insertedIds:
+            { '0': 5af11b7670490262c8d88d40,
+                '1': 5af11b7670490262c8d88d41,
+                '2': 5af11b7670490262c8d88d42
+            } 
+        }
+
+03      查询数据库
+        .find({}).toArray(callback(err, docs))
+
+04      修改数据
+        .updateOne({}, {$set: {}}, callback(err, result))
+        .updateMany()
+
+05      删除数据
+        .removeOne({}, callback(err, result))
+        .deleteMany({})
+
+06      创建索引
+        .createIndex(
+          {"age": 1},
+          { unique:true }, //唯一索引
+          callback(err, result)
+        )
+
+07      分页
+        find().limit(5).toArray() //分页
+        count({}, callback) //查询数量
+
+
+“$lt”	小于
+“$lte”	小于等于
+“$gt”	大于
+“$gte”	大于等于
+“$ne”	不等于
+
+‘$in’ 一个键对应多个值
+‘$nin’ 同上取反, 一个键不对应指定值
+“$or” 多个条件匹配, 可以嵌套 $in 使用
+“$not”	同上取反, 查询与特定模式不匹配的文档
