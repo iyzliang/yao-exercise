@@ -1,0 +1,31 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+ul {
+  list-style: none;
+}
+input,
+select,
+button {
+  outline: none;
+}
+body {
+  font-family: 'PingFang SC';
+}
+.clearfix::after {
+  clear: both;
+  content: '';
+  display: block;
+}
+.floatleft{
+  float: left;
+}
+.floatright{
+  float: right;
+}
