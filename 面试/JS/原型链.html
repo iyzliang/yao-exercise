@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div>原型链</div>
+</body>
+<script>
+  function Father (name, work) {
+    this.name = name
+    this.work = work
+  }
+  Father.prototype.getWork = function () {
+    return `${this.name}的工作是${this.work}`
+  }
+  function Son () {
+    this.sonName = '小顾'
+  }
+  Son.prototype = new Father('姚亮', '程序员')
+  Son.prototype.getSonName = function () {
+    return `儿子是${this.sonName}`
+  }
+  var instance = new Son()
+  console.log(instance.getWork())
+  console.log('===>', instance)
+</script>
+</html>
