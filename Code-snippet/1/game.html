@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div class="app1">
+    <h1>app1</h1>
+    <p class="xue"></p>
+    <div class="btn">
+      <button onclick="BtnA('useQ')">使用Q技能</button>
+      <button onclick="BtnA('useW')">使用W技能</button>
+      <button onclick="BtnA('useAdd')">加血</button>
+    </div>
+  </div>
+  <div class="app2">
+    <h1>app2</h1>
+    <p class="xue"></p>
+    <div class="btn">
+      <button onclick="BtnB('useQ')">使用Q技能</button>
+      <button onclick="BtnB('useW')">使用W技能</button>
+      <button onclick="BtnB('useAdd')">加血</button>
+    </div>
+  </div>
+</body>
+<script src="./gzhs.js"></script>
+<script>
+  var app1 = document.querySelector('.app1>p')
+  var app2 = document.querySelector('.app2>p')
+  var a = new Youxi()
+  var b = new Youxi()
+  function BtnA (key) {
+    key && a[key]()
+    app1.innerHTML = a.getXue()
+  }
+  function BtnB (key) {
+    key && b[key]()
+    app2.innerHTML = b.getXue()
+  }
+  BtnA()
+  BtnB()
+</script>
+</html>

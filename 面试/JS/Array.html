@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  Array
+</body>
+<script>
+  // concat
+  var arr1 = [0, 2, 4, 6, 8]
+  var arr2 = [1, 3, 5, 7, 9]
+  var arr3 = arr1.concat(arr2)
+  console.log(arr3)
+  // find
+  var arr4 = [32, 44, 21, 12, 87]
+  var val1 = arr4.find((val) => {
+    return val > 43
+  })
+  var val2 = arr4.findIndex((val) => {
+    return val >= 44
+  })
+  console.log('val1', val1)
+  console.log('val2', val2)
+  console.log(arr4.includes(44))
+</script>
+</html>
